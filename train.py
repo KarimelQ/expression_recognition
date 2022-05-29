@@ -2,16 +2,21 @@ import time
 import argparse
 import os
 import sys
+# here we import the libraries
 if sys.version_info >= (3, 0):
         import _pickle as cPickle
 else:
         import cPickle
+
+#here we import SVM library for classification
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
 
 from data_loader import load_data 
 from parameters import DATASET, TRAINING, HYPERPARAMS
 
+
+#Here we add function to train model
 def train(epochs=HYPERPARAMS.epochs, random_state=HYPERPARAMS.random_state, 
           kernel=HYPERPARAMS.kernel, decision_function=HYPERPARAMS.decision_function, gamma=HYPERPARAMS.gamma, train_model=True):
 
@@ -74,8 +79,13 @@ def train(epochs=HYPERPARAMS.epochs, random_state=HYPERPARAMS.random_state,
             print( "  - evalution time = {0:.1f} sec".format(time.time() - start_time))
             return test_accuracy
 
+
+# Here function to evaluate model
 def evaluate(model, X, Y):
         predicted_Y = model.predict(X)
+        print("for this example, the prediction is :",predicted_Y[0])
+        #0=Angry, 1=Disgust, 2=Fear, 3=Happy, 4=Sad, 5=Surprise
+        return 0
         accuracy = accuracy_score(Y, predicted_Y)
         return accuracy
 

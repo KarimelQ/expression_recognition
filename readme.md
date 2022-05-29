@@ -50,6 +50,7 @@ The code was tested for python 2.7 and 3.6.
     pip install pandas
     pip install hyperopt
     pip install dlib
+    pip install opencv-python
     ```
 
 4. Convert the dataset to extract Face Landmarks and HOG Features
